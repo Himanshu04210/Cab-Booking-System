@@ -2,14 +2,21 @@ package com.masai.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,11 +31,16 @@ public class Drivers {
 	private Integer driverId;
 	
 	@NotEmpty
-	private String name;
+	private String driverName;
 	
 	@NotEmpty
 	@Column(unique = true)
 	private String email;
+	
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@NotNull
+	@NotBlank
+	@Size(max = 50, message = "email length should be less than 50 character")
 	private String password;
 	
 	@NotEmpty
@@ -44,10 +56,16 @@ public class Drivers {
 	@Column(unique = true)
 	private String licenceNumber;
 	
+	
 	private double rating;
 	
+	@NotNull
+	@NotBlank
+	private String location;
 	
+	private String role = "Driver";
 	
-	
+	@OneToOne(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Car car;
 	
 }

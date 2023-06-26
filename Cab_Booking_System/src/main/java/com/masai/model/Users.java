@@ -42,5 +42,6 @@ public class Users {
 	@NotBlank
 	private String mobileNumber;
 	
+	private String role = "user";
 
 }
