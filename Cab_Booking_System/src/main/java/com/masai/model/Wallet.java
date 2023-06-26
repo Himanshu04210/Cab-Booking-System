@@ -12,6 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,10 +36,10 @@ public class Wallet {
 	@Enumerated(EnumType.STRING)
 	private WalletStatus walletStatus = WalletStatus.ACTIVE;
 	
-	private List<Transactions> transactions = new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne
-	private Users users;
+	@JoinColumn(name = "userId")
+	private Users user;
 	
 }
