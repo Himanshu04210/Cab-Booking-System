@@ -53,16 +53,20 @@ public class Drivers {
 	@NotEmpty
 	private Integer age;
 	
+	@NotNull
+	@NotBlank
 	@Column(unique = true)
 	private String licenceNumber;
 	
-	
+	@Min(1)
+	@Max(10)
 	private double rating;
 	
 	@NotNull
 	@NotBlank
 	private String location;
 	
+	@Column(insertable = false)
 	private String role = "Driver";
 	
 	@OneToOne(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
