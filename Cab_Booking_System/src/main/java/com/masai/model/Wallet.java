@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.masai.model.Enums.WalletStatus;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,11 +27,13 @@ public class Wallet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer walletId;
 	
-	private double totalBalence;
+	private double walletBalence;
 	
 	private double creditMoney;
 	private double debitMoney;
 	
+	@Enumerated(EnumType.STRING)
+	private WalletStatus walletStatus = WalletStatus.ACTIVE;
 	
 	private List<Transactions> transactions = new ArrayList<>();
 	
