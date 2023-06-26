@@ -2,6 +2,7 @@ package com.masai.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -45,10 +46,13 @@ public class Users {
 	@NotBlank
 	private String mobileNumber;
 	
+	
 	private String role = "user";
+	
+	@Embedded
+	private Address address;
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private  Wallet wallet;
-	
 
 }
