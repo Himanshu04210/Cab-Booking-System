@@ -8,7 +8,7 @@ import com.masai.Exception.UserException;
 import com.masai.Repository.UserRepository;
 import com.masai.model.Users;
 
-public class LogInUser {
+public class LogInUserController {
 
 	@Autowired
 	private UserRepository userRepository;

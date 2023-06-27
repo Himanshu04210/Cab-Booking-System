@@ -9,10 +9,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Exception.UserException;
@@ -44,6 +46,7 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	//for user
 	@PostMapping("/users")
 	public  ResponseEntity<?> registerUser(@Valid @RequestBody Users user) throws UserException {
 		
@@ -54,7 +57,7 @@ public class UserController {
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 	}
 	
-	
+	//for user
 	@GetMapping("/users/profile")
 	public ResponseEntity<?> getUserProfile(Authentication authentication) throws UserException {
 		
@@ -81,15 +84,16 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 	
-	
-	public ResponseEntity<?> updateUserMobileNumberHandler(String mobileNumber, Authentication authentication) throws UserException {
+	//for user
+	@PatchMapping("/users/{mobileNumber}")
+	public ResponseEntity<?> updateUserMobileNumberHandler(@PathVariable String mobileNumber, Authentication authentication) throws UserException {
 		Users updatedUser = userService.updateUserMobileNumber(authentication.getName(), mobileNumber);
 		return ResponseEntity.ok(updatedUser);
 		
 	}
 	
-	@DeleteMapping("/user/delete")
-	public ResponseEntity<?> deleteUserHandler(String email) throws UserException {
+	@DeleteMapping("/user/delete/{email}")
+	public ResponseEntity<?> deleteUserHandler(@PathVariable String email) throws UserException {
 		Users user = userService.deleteUserByEmail(email);
 		return ResponseEntity.ok(user);
 	}
