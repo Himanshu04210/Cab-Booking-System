@@ -25,6 +25,7 @@ public class Wallet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer walletId;
 	
+	
 	private double walletBalence;
 	
 	private double creditMoney;

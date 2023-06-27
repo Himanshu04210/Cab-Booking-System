@@ -10,6 +10,8 @@ import com.masai.Exception.UserException;
 import com.masai.Repository.UserRepository;
 import com.masai.Service.UserService;
 import com.masai.model.Users;
+import com.masai.model.Wallet;
+import com.masai.model.Enums.WalletStatus;
 @Service
 public class UserServiceImple implements UserService{
 
@@ -27,7 +29,13 @@ public class UserServiceImple implements UserService{
  		
  		if(existingUser.isPresent()) throw new UserException("User is already present in database");
  		
+ 		
  		try {
+ 			Wallet wallet = user.getWallet();
+ 			wallet.setWalletBalence(0);
+ 			wallet.setCreditMoney(0);
+ 			wallet.setDebitMoney(0);
+ 			wallet.setWalletStatus(WalletStatus.ACTIVE);
  			Users savedUser = userRepository.save(user);
  			return savedUser;
  		}

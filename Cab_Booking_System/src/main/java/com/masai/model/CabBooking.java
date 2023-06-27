@@ -39,8 +39,6 @@ public class CabBooking {
 	
 	private double totalBill;
 	
-	
-	
 	private Integer driverId;
 	
 	

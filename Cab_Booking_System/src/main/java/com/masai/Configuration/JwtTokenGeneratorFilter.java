@@ -31,12 +31,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (null != authentication) {
         	
-        	
-        	
-        	
             SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
-            
-            
             
             String jwt = Jwts.builder()
             		.setIssuer("Aman")
