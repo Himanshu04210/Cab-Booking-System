@@ -2,6 +2,7 @@ package com.masai.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,15 +30,16 @@ public class CabBooking {
 	@NotBlank
 	private String toLocation;
 	
-	
-	private LocalDateTime timeStamp = LocalDateTime.now();
-	
-
 	@NotNull
 	@NotBlank
 	private double distanceInKm;
 	
+	
 	private double totalBill;
+	
+	
+	@Column(insertable = false, updatable = false)
+	private LocalDateTime bookingTime = LocalDateTime.now();
 	
 	private Integer driverId;
 	

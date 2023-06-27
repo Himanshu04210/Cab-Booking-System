@@ -1,5 +1,7 @@
 package com.masai.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -48,6 +50,9 @@ public class Users {
 	
 	@Column(insertable = false, updatable = false)
 	private String role = "ROLE_USER";
+	
+	@Column(insertable = false, updatable = false)
+	private LocalDateTime dataEntered = LocalDateTime.now();
 	
 	@Embedded
 	private Address address;
