@@ -66,8 +66,8 @@ public class Drivers {
 	@NotBlank
 	private String location;
 	
-	@Column(insertable = false)
-	private String role = "Driver";
+	@Column(insertable = false, updatable = false)
+	private String role = "ROLE_DRIVER";
 	
 	@OneToOne(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Car car;

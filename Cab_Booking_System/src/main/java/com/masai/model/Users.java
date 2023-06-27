@@ -46,8 +46,8 @@ public class Users {
 	@NotBlank
 	private String mobileNumber;
 	
-	
-	private String role = "user";
+	@Column(insertable = false, updatable = false)
+	private String role = "ROLE_USER";
 	
 	@Embedded
 	private Address address;

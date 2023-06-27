@@ -1,8 +1,5 @@
 package com.masai.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.masai.model.Enums.WalletStatus;
 
