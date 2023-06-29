@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.masai.Repository.DriverRepository;
 import com.masai.Repository.UserRepository;
+import com.masai.model.Drivers;
 import com.masai.model.Users;
 
 public class UserDetailServiceImple implements UserDetailsService{
@@ -31,7 +32,7 @@ public class UserDetailServiceImple implements UserDetailsService{
 		 }
 		 
 		 
-		 Optional<Users> optDriver = driverRepository.findByEmail(username);
+		 Optional<Drivers> optDriver = driverRepository.findByEmail(username);
 		 
 		 if(optDriver.isPresent()) {
 			 
