@@ -35,12 +35,12 @@ public class Drivers {
 	
 	@NotEmpty
 	@Column(unique = true)
+	@Size(max = 50, message = "email length should be less than 50 character")
 	private String email;
 	
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@NotNull
 	@NotBlank
-	@Size(max = 50, message = "email length should be less than 50 character")
 	private String password;
 	
 	@NotEmpty

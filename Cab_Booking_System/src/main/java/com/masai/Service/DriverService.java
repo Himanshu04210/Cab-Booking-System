@@ -16,5 +16,5 @@ public interface DriverService {
 	public List<Drivers> getAllDriver() throws DriverException;
 	public Drivers deleteDriverByEmail(String email) throws DriverException;
 	public List<Drivers> getAllDriverInPages(Integer pageNumber, Integer numberOfRecords) throws DriverException;
-	
+	public List<Drivers> getDriverByLocation(String location) throws DriverException;
 }

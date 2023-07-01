@@ -13,6 +13,8 @@ public interface UserService {
 	public Users deleteUserByEmail(String email) throws UserException;
 	public List<Users> getAllUserList() throws UserException;
 	public Users getUserByEmail(String email) throws UserException;
+	public List<Users> getAllUsersInPages(Integer pageNumber, Integer numberOfRecords) throws UserException;
+	
 	
 	
 }

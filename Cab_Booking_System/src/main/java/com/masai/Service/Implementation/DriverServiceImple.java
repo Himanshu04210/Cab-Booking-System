@@ -115,11 +115,18 @@ public class DriverServiceImple implements DriverService{
 		Pageable p = PageRequest.of(pageNumber-1, numberOfRecords);
 		
 		Page<Drivers> page= driverRepository.findAll(p);
-		
-		
 		List<Drivers> drivers = page.getContent();
 		
 		if(drivers.isEmpty()) throw new DriverException("No driver is present in this page");
+		
+		return drivers;
+	}
+
+	@Override
+	public List<Drivers> getDriverByLocation(String location) throws DriverException {
+		List<Drivers> drivers= driverRepository.findByLocation(location).orElseThrow(() -> new DriverException("No driver present in this location"));
+		
+		if(drivers.isEmpty()) throw new DriverException("No driver is present in this location");
 		
 		return drivers;
 	}
