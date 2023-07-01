@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.masai.Exception.CarException;
@@ -53,39 +56,72 @@ public class DriverServiceImple implements DriverService{
 	}
 
 	@Override
-	public Drivers updateDrivercredential(Drivers driver) throws DriverException {
-		// TODO Auto-generated method stub
-		return null;
+	public Drivers updateDrivercredential(String email, Drivers driver) throws DriverException {
+		
+		Drivers existingDriver = driverRepository.findByEmail(email).orElseThrow(() -> new DriverException("No driver present with this email"));
+		
+		try {
+			existingDriver.setAge(driver.getAge());
+			existingDriver.setDriverName(driver.getDriverName());
+			existingDriver.setLicenceNumber(driver.getLicenceNumber());
+			existingDriver.setMobileNumber(driver.getMobileNumber());
+			existingDriver.setPassword(driver.getPassword());
+			Drivers updatedDriver = driverRepository.save(existingDriver);
+			return updatedDriver;
+			
+		}
+		catch(Exception ex) {
+			throw new DriverException("Something went wrong because " + ex.getMessage());
+		}
 	}
 
 	@Override
 	public Drivers getDriverByDriverId(Integer driverId) throws DriverException {
-		// TODO Auto-generated method stub
-		return null;
+		return driverRepository.findById(driverId).orElseThrow(() -> new DriverException("No driver present with this id"));
 	}
 
 	@Override
 	public Drivers getDriverByEmail(String email) throws DriverException {
-		// TODO Auto-generated method stub
-		return null;
+		return driverRepository.findByEmail(email).orElseThrow(() -> new DriverException("Driver is not present in the database"));
 	}
 
 	@Override
 	public List<Drivers> getAllDriver() throws DriverException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Drivers> drivers = driverRepository.findAll();
+		
+		if(drivers.isEmpty()) throw new DriverException("No driver is present");
+		
+		return drivers;
 	}
 
 	@Override
 	public Drivers deleteDriverByEmail(String email) throws DriverException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Drivers driver = driverRepository.findByEmail(email).orElseThrow(() -> new DriverException("Driver is not present in the database"));
+		
+		driverRepository.delete(driver);
+		
+		return driver;
 	}
 
 	@Override
 	public Drivers getDriverByLicenceNumber(String licenceNumber) throws DriverException {
-		// TODO Auto-generated method stub
-		return null;
+		return driverRepository.findByLicenceNumber(licenceNumber).orElseThrow(() -> new DriverException("Driver is not present in the database"));
+	}
+
+	@Override
+	public List<Drivers> getAllDriverInPages(Integer pageNumber, Integer numberOfRecords) throws DriverException {
+		
+		Pageable p = PageRequest.of(pageNumber-1, numberOfRecords);
+		
+		Page<Drivers> page= driverRepository.findAll(p);
+		
+		
+		List<Drivers> drivers = page.getContent();
+		
+		if(drivers.isEmpty()) throw new DriverException("No driver is present in this page");
+		
+		return drivers;
 	}
 
 }
