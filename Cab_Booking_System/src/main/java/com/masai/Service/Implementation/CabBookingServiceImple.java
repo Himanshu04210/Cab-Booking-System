@@ -66,7 +66,6 @@ public class CabBookingServiceImple implements CabBookingService{
 		catch(Exception ex) {
 			throw new CabBookingException("Something went wrong");
 		}
-		
 	}
 
 }

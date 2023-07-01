@@ -11,11 +11,15 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Exception.CarException;
 import com.masai.Exception.DriverException;
+import com.masai.Repository.AdminRepository;
 import com.masai.Repository.CarRepository;
 import com.masai.Repository.DriverRepository;
+import com.masai.Repository.UserRepository;
 import com.masai.Service.DriverService;
+import com.masai.model.Admins;
 import com.masai.model.Car;
 import com.masai.model.Drivers;
+import com.masai.model.Users;
 
 
 @Service
@@ -25,17 +29,37 @@ public class DriverServiceImple implements DriverService{
 	private DriverRepository driverRepository;
 	
 	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private AdminRepository adminRepository;
+	
+	
+	@Autowired
 	private CarRepository carRepository;
 	
 	@Override
 	
 	public Drivers registerDriver(Drivers driver) throws DriverException, CarException {
 		
-		Optional<Drivers> opt  = driverRepository.findByEmail(driver.getEmail());
+		Optional<Drivers> optDriver  = driverRepository.findByEmail(driver.getEmail());
 		
-		if(opt.isPresent()) throw new DriverException("Driver is already present in database");
+		if(optDriver.isPresent()) throw new DriverException("Driver is already present in database");
+		
+		Optional<Users> optUser  = userRepository.findByEmail(driver.getEmail());
+		
+		if(optUser.isPresent()) throw new DriverException("Driver is already present in database");
+		
+
+		Optional<Admins> optAdmin  = adminRepository.findByEmail(driver.getEmail());
+		
+		if(optAdmin.isPresent()) throw new DriverException("Driver is already present in database");
+		
+		
 		
 		Optional<Car> optCar = carRepository.findByCarNumber(driver.getCar().getCarNumber());
+		
+		
 		
 		if(optCar.isPresent()) throw new CarException("Car is already present in the database");
 		

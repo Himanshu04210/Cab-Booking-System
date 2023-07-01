@@ -10,8 +10,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.masai.Exception.UserException;
+import com.masai.Repository.AdminRepository;
+import com.masai.Repository.DriverRepository;
 import com.masai.Repository.UserRepository;
 import com.masai.Service.UserService;
+import com.masai.model.Admins;
+import com.masai.model.Drivers;
 import com.masai.model.Users;
 import com.masai.model.Wallet;
 import com.masai.model.Enums.WalletStatus;
@@ -21,8 +25,11 @@ public class UserServiceImple implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private DriverRepository driverRepository;
 	
-	
+	@Autowired
+	private AdminRepository adminRepository;
 	
 	@Override
 	public Users registerUser(Users user) throws UserException {
@@ -31,6 +38,12 @@ public class UserServiceImple implements UserService{
  		Optional<Users> existingUser = userRepository.findByEmail(user.getEmail());
  		
  		if(existingUser.isPresent()) throw new UserException("User is already present in database");
+ 		
+ 		Optional<Drivers> existingDriver = driverRepository.findByEmail(user.getEmail());
+ 		if(existingDriver.isPresent()) throw new UserException("User is already present in database");
+ 		
+ 		Optional<Admins> existingAdmin = adminRepository.findByEmail(user.getEmail());
+ 		if(existingAdmin.isPresent()) throw new UserException("User is already present in database");
  		
  		
  		try {
