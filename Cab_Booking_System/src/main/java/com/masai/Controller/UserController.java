@@ -101,6 +101,13 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 	
+	@GetMapping("/users/pagination/{numberOfRecord}")
+	public ResponseEntity<List<?>> getUserWithPagination(@PathVariable Integer numberOfRecord, @RequestParam Integer page) throws UserException {
+		List<Users> users = userService.getAllUsersInPages(page, numberOfRecord);
+		
+		return ResponseEntity.ok(users);
+	}
+	
 	//for user
 	@PatchMapping("/users/{mobileNumber}")
 	public ResponseEntity<?> updateUserMobileNumberHandler(@PathVariable String mobileNumber, Authentication authentication) throws UserException {
