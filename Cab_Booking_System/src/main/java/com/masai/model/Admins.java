@@ -1,6 +1,7 @@
 package com.masai.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +31,8 @@ public class Admins {
 	@NotNull(message = "password cannot be null")
 	@NotBlank
 	private String password;
+	
+	@Embedded
 	private Address address;
 	
 	@Column(insertable = false, updatable = false)

@@ -29,10 +29,27 @@ public class UserController {
 	
 	
 	/*
-	 * This will be the user object
-	 * 
-	 * 
-	 * 
+	 
+	  
+	  {
+	  	"name":"Aman",
+	  	"email":"aman@gmail.com",
+	  	"password":"AmanAstel",
+	  	"mobileNumber":"7008009001"
+	  	{
+	  	  "city":"Kanpur",
+	  	  "state":"UP
+	  	}
+	  
+	  }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	 * 
 	 * */
 	
