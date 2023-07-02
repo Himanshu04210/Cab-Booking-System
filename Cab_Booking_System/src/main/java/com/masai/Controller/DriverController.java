@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Exception.CarException;
 import com.masai.Exception.DriverException;
 import com.masai.Service.DriverService;
 import com.masai.model.Drivers;
 
+@RestController
+@RequestMapping("/api")
 public class DriverController {
 
 	@Autowired
