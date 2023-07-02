@@ -67,7 +67,7 @@ public class Drivers {
 	@NotBlank
 	private String location;
 	
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	private String role = "ROLE_DRIVER";
 	
 	@Embedded

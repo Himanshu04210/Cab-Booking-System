@@ -1,5 +1,6 @@
 package com.masai.Service.Implementation;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,7 @@ public class UserServiceImple implements UserService{
  			wallet.setWalletBalence(0);
  			wallet.setCreditMoney(0);
  			wallet.setDebitMoney(0);
+ 			wallet.setTimeStamp(LocalDateTime.now());
  			wallet.setWalletStatus(WalletStatus.ACTIVE);
  			Users savedUser = userRepository.save(user);
  			return savedUser;

@@ -1,5 +1,7 @@
 package com.masai.Service.Implementation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,7 @@ public class CabBookingServiceImple implements CabBookingService{
 	@Autowired
 	private CabResponseRepository cabResponseRepository;
 	
+	
 	@Override
 	public CabResponse bookTheCab(String email, CabBooking cabBooking) throws CabBookingException, DriverException, UserException {
 		
@@ -41,6 +44,8 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		if(!driver.getLocation().equals(cabBooking.getFromLocation())) throw new DriverException("Drivers location's is different from your location");
 		
+		
+		
 		double dis = cabBooking.getDistanceInKm();
 		
 		double rate = driver.getCar().getRatePerKm();
@@ -49,13 +54,15 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		cabBooking.setTotalBill(totalBill);
 		cabBooking.setCabStatus(CabStatus.BOOKED);
-		cabBooking.setUser(user);
+		cabBooking.setUserEmail(email);
 		
 		CabResponse cabResponse = new CabResponse();
 		
 		cabResponse.setFromLocation(cabBooking.getFromLocation());
 		cabResponse.setToLocation(cabBooking.getToLocation());
 		cabResponse.setCabStatus(CabStatus.COMPLETED);
+		cabResponse.setTime(String.valueOf(dis*3) + " min");
+		cabResponse.setTotalBill(totalBill);
 		cabResponse.setDriver(driver);
 		cabResponse.setUser(user);
 		
@@ -66,6 +73,34 @@ public class CabBookingServiceImple implements CabBookingService{
 		catch(Exception ex) {
 			throw new CabBookingException("Something went wrong");
 		}
+		
 	}
+
+
+	@Override
+	public List<CabBooking> getCabBookedHistoryByUserEmail(String email) throws CabBookingException, UserException {
+		
+		userRepository.findByEmail(email).orElseThrow(() -> new UserException("User not found"));
+		
+		List<CabBooking> list = cabBookingRepository.findByUserEmail(email).orElseThrow(() -> new CabBookingException("No history available"));
+		if(list.isEmpty()) throw new CabBookingException("No history is available");
+		
+		return list;
+	}
+
+
+	@Override
+	public List<CabBooking> getCabBookedHistoryByDriverEmail(String email) throws CabBookingException, DriverException {
+		Drivers driver = driverRepository.findByEmail(email).orElseThrow(() -> new DriverException("Driver not found"));
+		
+
+		List<CabBooking> list = cabBookingRepository.findByDriverId(driver.getDriverId()).orElseThrow(() -> new CabBookingException("No history available"));
+		if(list.isEmpty()) throw new CabBookingException("No history is available");
+		
+		return list;
+	}
+	
+	
+
 
 }

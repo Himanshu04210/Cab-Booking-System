@@ -1,8 +1,11 @@
 package com.masai.model;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.masai.model.Enums.CabStatus;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,8 +30,15 @@ public class CabResponse {
 	
 	private String toLocation;
 	
+	private double totalBill;
+	
+	private String time;
+	
 	@Enumerated(EnumType.STRING)
 	private CabStatus cabStatus;
+	
+	@Column(updatable = false)
+	private LocalDateTime timeStamp = LocalDateTime.now();
 	
 	@OneToOne
 	@JoinColumn(name = "userId")

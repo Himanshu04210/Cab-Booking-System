@@ -48,10 +48,10 @@ public class Users {
 	@NotBlank
 	private String mobileNumber;
 	
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	private String role = "ROLE_USER";
 	
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	private LocalDateTime dataEntered = LocalDateTime.now();
 	
 	@Embedded

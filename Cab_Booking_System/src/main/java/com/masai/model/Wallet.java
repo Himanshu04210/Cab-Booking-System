@@ -1,5 +1,8 @@
 package com.masai.model;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.masai.model.Enums.WalletStatus;
 
@@ -10,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +38,11 @@ public class Wallet {
 	@Enumerated(EnumType.STRING)
 	private WalletStatus walletStatus = WalletStatus.ACTIVE;
 	
+	private LocalDateTime timeStamp;
+	
+	@OneToMany
+	@JoinColumn(name = "transactionId")
+	private List<Transactions> transactions;
 	
 	@JsonIgnore
 	@OneToOne

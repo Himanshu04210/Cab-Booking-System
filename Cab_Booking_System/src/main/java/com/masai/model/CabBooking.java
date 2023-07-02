@@ -11,8 +11,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -46,13 +44,11 @@ public class CabBooking {
 	@Enumerated(EnumType.STRING)
 	private CabStatus cabStatus;
 	
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	private LocalDateTime bookingTime = LocalDateTime.now();
 	
 	private Integer driverId;
 	
-	@OneToOne
-	@JoinColumn(name = "userId")
-	private Users user;
+	private String userEmail;
 	
 }
