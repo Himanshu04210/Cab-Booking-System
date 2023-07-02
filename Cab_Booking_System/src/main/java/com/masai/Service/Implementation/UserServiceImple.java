@@ -38,22 +38,26 @@ public class UserServiceImple implements UserService{
 		
  		Optional<Users> existingUser = userRepository.findByEmail(user.getEmail());
  		
- 		if(existingUser.isPresent()) throw new UserException("User is already present in database");
+ 		if(existingUser.isPresent()) throw new UserException("Email is already present in database");
  		
  		Optional<Drivers> existingDriver = driverRepository.findByEmail(user.getEmail());
- 		if(existingDriver.isPresent()) throw new UserException("User is already present in database");
+ 		if(existingDriver.isPresent()) throw new UserException("Email is already present in database");
  		
  		Optional<Admins> existingAdmin = adminRepository.findByEmail(user.getEmail());
- 		if(existingAdmin.isPresent()) throw new UserException("User is already present in database");
+ 		if(existingAdmin.isPresent()) throw new UserException("Email is already present in database");
  		
  		
  		try {
- 			Wallet wallet = user.getWallet();
+ 			
+ 			Wallet wallet = new Wallet();
  			wallet.setWalletBalence(0);
  			wallet.setCreditMoney(0);
  			wallet.setDebitMoney(0);
  			wallet.setTimeStamp(LocalDateTime.now());
  			wallet.setWalletStatus(WalletStatus.ACTIVE);
+ 			wallet.setUser(user);
+ 			
+ 			user.setWallet(wallet);
  			Users savedUser = userRepository.save(user);
  			return savedUser;
  		}
