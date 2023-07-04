@@ -21,7 +21,7 @@ public class WalletController {
 	@Autowired
 	private WalletService walletService;
 	
-	@PatchMapping("/wallets/CreditMoney/")
+	@PatchMapping("/wallets/CreditMoney")
 	public ResponseEntity<?> creditMoneyInWalletHandler(@RequestBody MyRequest myRequest, Authentication authentication) throws WalletException, UserException {
 		String totalWalletBalance = walletService.addMoney(authentication.getName(), myRequest.getMoney());
 		
@@ -29,7 +29,7 @@ public class WalletController {
 	}
 	
 	
-	@PatchMapping("/wallets/DebitMoney/")
+	@PatchMapping("/wallets/DebitMoney")
 	public ResponseEntity<?> debitMoneyInWalletHandler(@RequestBody MyRequest myRequest, Authentication authentication) throws WalletException, UserException {
 		String totalWalletBalance = walletService.debitMoney(authentication.getName(), myRequest.getMoney());
 		

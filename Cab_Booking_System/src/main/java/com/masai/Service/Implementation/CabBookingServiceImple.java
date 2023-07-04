@@ -57,6 +57,7 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		if(!driver.getLocation().equals(cabBooking.getFromLocation())) throw new DriverException("Drivers location's is different from your location");
 		
+		driver.setLocation(cabBooking.getToLocation());
 		
 		//some business logic is written there
 		double dis = cabBooking.getDistanceInKm();
@@ -74,7 +75,7 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		double currentMoney = wallet.getWalletBalence() - totalBill;
 		
-		if(currentMoney < 0) throw new WalletException("No have suffcient money in your wallet");
+		if(currentMoney < 0) throw new WalletException("Not have suffcient money in your wallet, first add some money");
 		
 		wallet.setWalletBalence(currentMoney);
 		
@@ -88,6 +89,7 @@ public class CabBookingServiceImple implements CabBookingService{
 		transaction.setToLocation(cabBooking.getToLocation());
 		transaction.setTimeStamp(LocalDateTime.now());
 		
+		wallet.getTransactions().add(transaction);
 		
 		//creating the object of CabResponse
 		CabResponse cabResponse = new CabResponse();
@@ -101,6 +103,7 @@ public class CabBookingServiceImple implements CabBookingService{
 		cabResponse.setUser(user);
 		
 		try {
+			driverRepository.save(driver);
 			cabBookingRepository.save(cabBooking);
 			walletRepository.save(wallet);
 			transactionRepository.save(transaction);

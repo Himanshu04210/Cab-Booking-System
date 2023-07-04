@@ -3,6 +3,7 @@ package com.masai.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.masai.Exception.UserException;
 import com.masai.Repository.UserRepository;
@@ -13,6 +14,8 @@ public class LogInUserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	
+	@GetMapping("/signIn")
 	public ResponseEntity<?> signInUserHandler(Authentication authentication) throws UserException {
 		Users loggedInUser = userRepository.findByEmail(authentication.getName()).orElseThrow(() -> new UserException("User not found"));
 		
