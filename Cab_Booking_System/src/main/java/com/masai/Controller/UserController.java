@@ -35,18 +35,13 @@ public class UserController {
 	  	"name":"Aman",
 	  	"email":"aman@gmail.com",
 	  	"password":"AmanAstel",
-	  	"mobileNumber":"7008009001"
+	  	"mobileNumber":"7008009001",
 	  	{
 	  	  "city":"Kanpur",
-	  	  "state":"UP
+	  	  "state":"UP"
 	  	}
 	  
 	  }
-	  
-	  
-	  
-	  
-	  
 	  
 	  
 	  
@@ -62,6 +57,14 @@ public class UserController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	
+	@GetMapping("/hello")
+	public ResponseEntity<?> getGreetingMessage() {
+		String message = "Welcome to the cab booking application";
+		return ResponseEntity.ok(message);
+	}
+	
 	
 	//for user
 	@PostMapping("/users")
