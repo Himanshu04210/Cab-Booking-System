@@ -15,7 +15,7 @@ import com.masai.Exception.WalletException;
 import com.masai.Service.WalletService;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class WalletController {
 
 	@Autowired

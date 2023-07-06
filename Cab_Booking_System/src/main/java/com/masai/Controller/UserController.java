@@ -112,14 +112,14 @@ public class UserController {
 	}
 	
 	//for user
-	@PatchMapping("/users/{mobileNumber}")
+	@PatchMapping("/users/update/{mobileNumber}")
 	public ResponseEntity<?> updateUserMobileNumberHandler(@PathVariable String mobileNumber, Authentication authentication) throws UserException {
 		Users updatedUser = userService.updateUserMobileNumber(authentication.getName(), mobileNumber);
 		return ResponseEntity.ok(updatedUser);
 		
 	}
 	
-	@DeleteMapping("/user/delete/{email}")
+	@DeleteMapping("/user/{email}")
 	public ResponseEntity<?> deleteUserHandler(@PathVariable String email) throws UserException {
 		Users user = userService.deleteUserByEmail(email);
 		return ResponseEntity.ok(user);

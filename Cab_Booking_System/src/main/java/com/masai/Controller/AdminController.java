@@ -1,0 +1,35 @@
+package com.masai.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.masai.Exception.AdminException;
+import com.masai.Service.AdminService;
+import com.masai.model.Admins;
+
+@RestController
+@RequestMapping("/api")
+public class AdminController {
+
+	@Autowired
+	private AdminService adminService;
+	
+	@PostMapping("/admins/{secretUser}")
+	public ResponseEntity<?> registerAdmin(@PathVariable String secretUser, @RequestParam String secretPassword, @RequestBody Admins admin) throws AdminException {
+		if(!(secretUser.toLowerCase().equals("admin") && secretPassword.toLowerCase().equals("admin"))) throw new AdminException("secret username or password is wrong");
+		
+		Admins existingAdmin = adminService.registerAdmin(admin);
+		 
+		 return new ResponseEntity<>(existingAdmin, HttpStatus.CREATED);
+	}
+	
+	
+	
+}
