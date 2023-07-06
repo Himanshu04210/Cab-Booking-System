@@ -55,26 +55,21 @@ public class DriverServiceImple implements DriverService{
 		
 		if(optAdmin.isPresent()) throw new DriverException("Driver is already present in database");
 		
-		
-		
 		Optional<Car> optCar = carRepository.findByCarNumber(driver.getCar().getCarNumber());
-		
-		
-		
 		if(optCar.isPresent()) throw new CarException("Car is already present in the database");
-		
-		
-		try {
-			
-			Drivers savedDriver = driverRepository.save(driver);
-			
-			return savedDriver;
-			
-		}
-		catch(Exception ex) {
-			throw new DriverException("Something went wrong because " + ex.getMessage());
-		}
-		
+		driver.getCar().setDriver(driver);
+		return driverRepository.save(driver);
+//		try {
+//			
+//			Drivers savedDriver = driverRepository.save(driver);
+//			
+//			return savedDriver;
+//			
+//		}
+//		catch(Exception ex) {
+//			throw new DriverException("Something went wrong because " + ex);
+//		}
+//		
 		
 		
 	}

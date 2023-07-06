@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.config.annotation.web.oauth2.login.AuthorizationEndpointDsl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +22,8 @@ import com.masai.Exception.DriverException;
 import com.masai.Service.DriverService;
 import com.masai.model.Drivers;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 public class DriverController {
@@ -34,7 +35,7 @@ public class DriverController {
 	private PasswordEncoder passwordEncoder;
 	
 	@PostMapping("/drivers")
-	public ResponseEntity<?> registerDriver(@RequestBody Drivers driver) throws DriverException, CarException {
+	public ResponseEntity<?> registerDriver(@Valid @RequestBody Drivers driver) throws DriverException, CarException {
 		driver.setPassword(passwordEncoder.encode(driver.getPassword()));
 		Drivers savedDriver = driverService.registerDriver(driver);
 		

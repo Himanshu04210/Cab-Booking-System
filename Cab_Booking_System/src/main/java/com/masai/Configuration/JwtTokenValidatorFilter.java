@@ -19,7 +19,6 @@ import javax.crypto.SecretKey;
 import java.io.IOException;
 
 public class JwtTokenValidatorFilter extends OncePerRequestFilter {
-
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -60,11 +59,10 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 	
-		return request.getServletPath().equals("/signIn");
+		return request.getServletPath().equals("/api/signIn");
 	}
 
 
-	
 	
 	
 	

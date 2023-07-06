@@ -2,6 +2,9 @@ package com.masai.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -42,6 +45,7 @@ public class Users {
 	
 	@NotNull
 	@NotBlank
+	@JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	
 	@NotNull
@@ -52,7 +56,7 @@ public class Users {
 	private String role = "ROLE_USER";
 	
 	@Column(updatable = false)
-	private LocalDateTime dataEntered = LocalDateTime.now();
+	private LocalDateTime dataEntered;
 	
 	@Embedded
 	private Address address;

@@ -25,19 +25,19 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer carId;
 	
-	@NotNull
-	@NotBlank
+//	@NotNull
+//	@NotBlank
 	@Column(unique = true)
 	private String carNumber;
 	
 	@Enumerated(EnumType.STRING)
-	@NotNull
-	@NotBlank
+//	@NotNull
+//	@NotBlank
 	private CarType carType;
 	
-	@NotNull
-	@NotBlank
-	private double ratePerKm;
+//	@NotNull
+//	@NotBlank
+	private Double ratePerKm;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.PERSIST)

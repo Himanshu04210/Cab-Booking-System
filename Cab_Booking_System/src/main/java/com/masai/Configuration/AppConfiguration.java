@@ -55,7 +55,7 @@ public class AppConfiguration {
                         .requestMatchers(HttpMethod.GET, "/api/hello").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/drivers").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/api/admins").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/api/admins/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/api/drivers", "/api/users").hasRole("ADMIN")
                         .requestMatchers("/api/users/**","/api/drivers/**", "/api/cabBooking", "/api/cabBooking/**", "/api/users", "/api/drivers").hasRole("ADMIN")
                         .requestMatchers("/api/cabBooking/user","/api/cabBooking","/api/wallets/**", "/api/drivers/**", "/api/users/profile").hasAnyRole("USER")

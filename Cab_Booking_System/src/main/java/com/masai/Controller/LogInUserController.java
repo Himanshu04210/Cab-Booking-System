@@ -20,6 +20,7 @@ public class LogInUserController {
 	
 	@GetMapping("/signIn")
 	public ResponseEntity<?> signInUserHandler(Authentication authentication) throws UserException {
+		//System.out.println("working");
 		Users loggedInUser = userRepository.findByEmail(authentication.getName()).orElseThrow(() -> new UserException("User not found"));
 		
 		CurrentSessionUser.email = loggedInUser.getEmail();

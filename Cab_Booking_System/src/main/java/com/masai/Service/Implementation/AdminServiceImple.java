@@ -3,6 +3,7 @@ package com.masai.Service.Implementation;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.Exception.AdminException;
 import com.masai.Repository.AdminRepository;
@@ -13,6 +14,7 @@ import com.masai.model.Admins;
 import com.masai.model.Drivers;
 import com.masai.model.Users;
 
+@Service
 public class AdminServiceImple implements AdminService{
 
 
@@ -37,11 +39,14 @@ public class AdminServiceImple implements AdminService{
  		Optional<Admins> existingAdmin = adminRepository.findByEmail(admin.getEmail());
  		if(existingAdmin.isPresent()) throw new AdminException("User is already present in database");
  		
+// 		return adminRepository.save(admin);
  		
  		try {
- 			return adminRepository.save(admin);
+ 			System.out.println(admin.getEmail());
+ 			Admins savedAdmin = adminRepository.save(admin);
+ 			return savedAdmin;
  		}catch(Exception ex) {
- 			throw new AdminException("Something went wrong");
+ 			throw new AdminException("Something went wrong " + ex.getMessage());
  		}
 	}
 	

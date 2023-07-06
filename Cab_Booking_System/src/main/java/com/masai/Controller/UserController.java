@@ -1,5 +1,6 @@
 package com.masai.Controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ public class UserController {
 	//for user
 	@PostMapping("/users")
 	public  ResponseEntity<?> registerUser(@Valid @RequestBody Users user) throws UserException {
-		
+		user.setDataEntered(LocalDateTime.now());
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
 		Users savedUser = userService.registerUser(user);

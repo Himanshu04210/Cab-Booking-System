@@ -49,9 +49,9 @@ public class Drivers {
 	private String mobileNumber;
 	
 	private LocalDate dob;
+	
 	@Min(18)
 	@Max(60)
-	@NotEmpty
 	private Integer age;
 	
 	@NotNull
@@ -67,13 +67,13 @@ public class Drivers {
 	@NotBlank
 	private String location;
 	
-	@Column(updatable = false)
-	private String role = "ROLE_DRIVER";
-	
 	@Embedded
 	private Address address;
 	
 	@OneToOne(mappedBy = "driver", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Car car;
+	
+	@Column(updatable = false)
+	private String role = "ROLE_DRIVER";
 	
 }
