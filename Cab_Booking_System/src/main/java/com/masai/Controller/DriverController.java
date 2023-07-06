@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.web.oauth2.login.AuthorizationEndpointDsl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,7 +52,7 @@ public class DriverController {
 		
 	}
 	
-	@GetMapping("/driver/email/{email}")
+	@GetMapping("/drivers/email/{email}")
 	public ResponseEntity<?> getDriverByEmail(@PathVariable String email) throws DriverException {
 		
 		Drivers driver = driverService.getDriverByEmail(email);
@@ -60,7 +61,7 @@ public class DriverController {
 		
 	}
 	
-	@GetMapping("/driver/location")
+	@GetMapping("/drivers/location")
 	public ResponseEntity<List<?>> getDriversByLocation(@PathVariable String location) throws DriverException {
 		List<Drivers> drivers = driverService.getDriverByLocation(location);
 		
@@ -103,8 +104,9 @@ public class DriverController {
 	}
 	
 	
-	@PatchMapping("/drivers/{email}")
-	public ResponseEntity<?> updateDrivercredential(@PathVariable String email, @RequestBody Drivers driver) throws DriverException {
+	@PatchMapping("/drivers")
+	public ResponseEntity<?> updateDrivercredential(Authentication authentication, @RequestBody Drivers driver) throws DriverException {
+		String email = authentication.getName();
 		Drivers updatedCredential = driverService.updateDrivercredential(email, driver);
 		
 		return ResponseEntity.ok(updatedCredential);
