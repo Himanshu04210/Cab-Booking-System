@@ -22,7 +22,7 @@ public class WalletController {
 	private WalletService walletService;
 	
 	@PatchMapping("/wallets/CreditMoney")
-	public ResponseEntity<?> creditMoneyInWalletHandler(@RequestBody MyRequest myRequest, Authentication authentication) throws WalletException, UserException {
+	public ResponseEntity<?> creditMoneyInWalletHandler(Authentication authentication, @RequestBody MyRequest myRequest) throws WalletException, UserException {
 		String totalWalletBalance = walletService.addMoney(authentication.getName(), myRequest.getMoney());
 		
 		return ResponseEntity.ok(totalWalletBalance);

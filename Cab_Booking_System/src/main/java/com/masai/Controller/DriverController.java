@@ -28,6 +28,39 @@ import jakarta.validation.Valid;
 @RequestMapping("/api")
 public class DriverController {
 
+	/*
+	 * 
+		{
+		  "driverName": "John Doe",
+		  "email": "johndoe@example.com",
+		  "password": "John",
+		  "mobileNumber": "1234567890",
+		  "dob": "1990-01-01",
+		  "age": 31,
+		  "licenceNumber": "ABCD1234",
+		  "rating": 5.0,
+		  "location": "New York",
+		  "address": {
+		    "city": "New York City",
+		    "state": "NY"
+		  },
+		  "car": {
+		    "carNumber": "ABC123",
+		    "carType": "SEDAN",
+		    "ratePerKm": 10.5
+		  }
+		}
+
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
+	
+	
+	
 	@Autowired
 	private DriverService driverService;
 	

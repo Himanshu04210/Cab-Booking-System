@@ -16,6 +16,8 @@ public class WalletServiceImple implements WalletService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	
+	@Autowired
 	private WalletRepository walletRepository;
 	
 	@Override
@@ -26,12 +28,12 @@ public class WalletServiceImple implements WalletService{
  		
 		Wallet wallet = user.getWallet();
 		
+		System.out.println(wallet.getWalletBalence());
 		if(wallet.getWalletStatus().toString().equals("ACTIVE")) {
 			
 			
 			try {
 				double balance = wallet.getWalletBalence() + creditMoney;
-				
 				wallet.setWalletBalence(balance);
 				walletRepository.save(wallet);
 				
@@ -39,7 +41,7 @@ public class WalletServiceImple implements WalletService{
 				
 			}
 			catch (Exception ex) {
-				throw new WalletException();
+				throw new WalletException("some problems occurs " + ex.getMessage() );
 			}
 			
 		}
