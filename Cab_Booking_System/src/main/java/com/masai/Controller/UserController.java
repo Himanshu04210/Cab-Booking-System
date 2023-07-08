@@ -83,7 +83,7 @@ public class UserController {
 	public ResponseEntity<?> getUserProfile(Authentication authentication) throws UserException {
 		
 		String email = authentication.getName();
-
+		//System.out.println(authentication.getAuthorities());
 		Users user = userService.getUserByEmail(email);
 		
 		return ResponseEntity.ok(user);

@@ -35,6 +35,7 @@ public class WalletServiceImple implements WalletService{
 			try {
 				double balance = wallet.getWalletBalence() + creditMoney;
 				wallet.setWalletBalence(balance);
+				wallet.setCreditMoney(creditMoney);
 				walletRepository.save(wallet);
 				
 				return "Total wallet balance is " + balance;
@@ -62,6 +63,7 @@ public class WalletServiceImple implements WalletService{
 				double balance = wallet.getWalletBalence() - debitMoney;
 				if(balance < 0) throw new  WalletException("Sufficent balance is not available, Please first add some money");
 				wallet.setWalletBalence(balance);
+				wallet.setDebitMoney(debitMoney);
 				walletRepository.save(wallet);
 				
 				return "Total wallet balance is " + balance;

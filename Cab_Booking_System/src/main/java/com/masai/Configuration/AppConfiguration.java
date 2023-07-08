@@ -49,17 +49,16 @@ public class AppConfiguration {
 
             .authorizeHttpRequests(auth ->{
                 auth
-//                            .requestMatchers(HttpMethod.POST,"/driver").permitAll()
-//                            .requestMatchers("/hello").permitAll()
+//                        
                         .requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/drivers").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/admins/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/api/drivers", "/api/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/hello").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/api/users/profile").hasRole("USER")
                         .requestMatchers("/api/users/**","/api/drivers/**", "/api/cabBooking", "/api/cabBooking/**", "/api/users", "/api/drivers").hasRole("ADMIN")
-                        .requestMatchers("/api/cabBooking/user","/api/cabBooking","/api/wallets/**", "/api/drivers/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/drivers/email/**").hasRole("USER")
+                        .requestMatchers("/api/cabBooking/user","/api/cabBooking","/api/wallets/**", "/api/drivers/**", "api/users/profile").hasRole("USER")
                         .requestMatchers("/api/cabBooking/driver", "/api/drivers/profile").hasRole("DRIVER")
                         .requestMatchers(HttpMethod.PATCH,"/api/users/**","/api/wallets/**").hasRole("USER")
 //                     
@@ -73,6 +72,7 @@ public class AppConfiguration {
         return http.build();
 		
 	}
+	 
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
