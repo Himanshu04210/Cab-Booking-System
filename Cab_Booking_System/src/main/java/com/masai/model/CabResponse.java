@@ -2,7 +2,6 @@ package com.masai.model;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.masai.model.Enums.CabStatus;
 
 import jakarta.persistence.Column;
@@ -12,8 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +21,6 @@ import lombok.Setter;
 public class CabResponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Integer rosponseId;
 	
 	private String fromLocation;
@@ -40,12 +37,11 @@ public class CabResponse {
 	@Column(updatable = false)
 	private LocalDateTime timeStamp = LocalDateTime.now();
 	
-	@OneToOne
-	@JoinColumn(name = "userId")
+	@ManyToOne
+	
 	private Users user;
 	
 	
-	@OneToOne
-	@JoinColumn(name = "driverId")
+	@ManyToOne
 	private Drivers driver;
 }

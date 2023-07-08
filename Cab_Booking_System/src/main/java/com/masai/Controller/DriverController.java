@@ -95,7 +95,7 @@ public class DriverController {
 		
 	}
 	
-	@GetMapping("/drivers/location")
+	@GetMapping("/drivers/location/{location}")
 	public ResponseEntity<List<?>> getDriversByLocation(@PathVariable String location) throws DriverException {
 		List<Drivers> drivers = driverService.getDriverByLocation(location);
 		

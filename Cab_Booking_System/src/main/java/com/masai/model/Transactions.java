@@ -32,14 +32,14 @@ public class Transactions {
 	private double amount;
 	
 	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId")
+	private Users user;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "driverId")
 	private Drivers driver;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	private Users user;
 	
 	
 }

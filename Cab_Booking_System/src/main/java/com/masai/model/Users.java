@@ -61,7 +61,7 @@ public class Users {
 	@Embedded
 	private Address address;
 	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private  Wallet wallet;
 
 }

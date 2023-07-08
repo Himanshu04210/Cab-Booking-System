@@ -4,15 +4,12 @@ import java.time.LocalDateTime;
 
 import com.masai.model.Enums.CabStatus;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,16 +23,16 @@ public class CabBooking {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cabBookingId;
 	
-	@NotNull
-	@NotBlank
+//	@NotNull
+//	@NotBlank
 	private String fromLocation;
 
-	@NotNull
-	@NotBlank
+//	@NotNull
+//	@NotBlank
 	private String toLocation;
 	
-	@NotNull
-	@NotBlank
+//	@NotNull
+//	@NotBlank
 	private double distanceInKm;
 	
 	
@@ -44,7 +41,7 @@ public class CabBooking {
 	@Enumerated(EnumType.STRING)
 	private CabStatus cabStatus;
 	
-	@Column(updatable = false)
+	
 	private LocalDateTime bookingTime = LocalDateTime.now();
 	
 	private Integer driverId;

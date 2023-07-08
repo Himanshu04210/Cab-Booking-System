@@ -19,6 +19,8 @@ import com.masai.Service.CabBookingService;
 import com.masai.model.CabBooking;
 import com.masai.model.CabResponse;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api")
 public class CabBookingController {
@@ -28,7 +30,7 @@ public class CabBookingController {
 	
 	
 	@PostMapping("/cabBooking")
-	public ResponseEntity<?> bookCabHandler(Authentication authentication, @RequestBody CabBooking cabBooking) throws CabBookingException, DriverException, UserException, WalletException {
+	public ResponseEntity<?> bookCabHandler(@Valid Authentication authentication, @RequestBody CabBooking cabBooking) throws CabBookingException, DriverException, UserException, WalletException {
 	
 		String email = authentication.getName();
 		

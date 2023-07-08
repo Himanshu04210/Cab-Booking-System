@@ -55,7 +55,7 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		Users user = userRepository.findByEmail(email).orElseThrow(() -> new UserException("User not found"));
 		
-		if(!driver.getLocation().equals(cabBooking.getFromLocation())) throw new DriverException("Drivers location's is different from your location");
+		if(!driver.getLocation().toLowerCase().equals(cabBooking.getFromLocation().toLowerCase())) throw new DriverException("Drivers location's is different from your location");
 		
 		driver.setLocation(cabBooking.getToLocation());
 		
@@ -72,6 +72,8 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		//Checking does wallet contain that much money that user is asking for
 		Wallet wallet = user.getWallet();
+		
+		user.setWallet(null);
 		
 		double currentMoney = wallet.getWalletBalence() - totalBill;
 		
@@ -110,7 +112,7 @@ public class CabBookingServiceImple implements CabBookingService{
 			return cabResponseRepository.save(cabResponse);
 		}
 		catch(Exception ex) {
-			throw new CabBookingException("Something went wrong");
+			throw new CabBookingException("Something went wrong " + ex.getMessage());
 		}
 		
 	}

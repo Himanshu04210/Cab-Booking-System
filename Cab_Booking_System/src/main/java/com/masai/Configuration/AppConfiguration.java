@@ -48,20 +48,18 @@ public class AppConfiguration {
             })
 
             .authorizeHttpRequests(auth ->{
-                auth
-//                        
+                auth                        
                         .requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/drivers").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/admins/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/api/drivers", "/api/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/users/profile").hasRole("USER")
-                        .requestMatchers("/api/users/**","/api/drivers/**", "/api/cabBooking", "/api/cabBooking/**", "/api/users", "/api/drivers").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/drivers/email/**").hasRole("USER")
-                        .requestMatchers("/api/cabBooking/user","/api/cabBooking","/api/wallets/**", "/api/drivers/**", "api/users/profile").hasRole("USER")
-                        .requestMatchers("/api/cabBooking/driver", "/api/drivers/profile").hasRole("DRIVER")
-                        .requestMatchers(HttpMethod.PATCH,"/api/users/**","/api/wallets/**").hasRole("USER")
-//                     
+                        .requestMatchers(HttpMethod.POST, "/api/cabBooking").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/api/users/profile", "/api/wallets/**", "/api/cabBooking/user", "/api/users/update/**").hasRole("USER")
+                        .requestMatchers("/api/drivers/profile", "/api/cabBooking/driver").hasRole("DRIVER")
+                        .requestMatchers("/api/drivers/email/**", "/api/drivers/id/**", "/api/drivers/location/**").hasAnyRole("USER", "DRIVER", "ADMIN")
+                        .requestMatchers("/api/**").hasRole("ADMIN")
+                        
                         .anyRequest().authenticated();
             })
             .csrf(csrf -> csrf.disable())
