@@ -111,9 +111,9 @@ public class UserServiceImple implements UserService{
 		List<Users> userList = userRepository.findAll();
 		
 		if(userList.isEmpty()) throw new UserException("No user is available");
-//		for(Users user : userList) {
-//			user.getWallet().setTransactions(null);
-//		}
+		for(Users user : userList) {
+			user.getWallet().setTransactions(null);
+		}
 		return userList;
 	}
 
@@ -138,9 +138,9 @@ public class UserServiceImple implements UserService{
 		
 		List<Users> users = page.getContent();
 		if(users.isEmpty()) throw new UserException("No user present in this page");
-//		for(Users user : users) {
-//			user.getWallet().setTransactions(null);
-//		}
+		for(Users user : users) {
+			user.getWallet().setTransactions(null);
+		}
 		return users;
 	}
 	
