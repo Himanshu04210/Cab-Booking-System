@@ -22,7 +22,8 @@ public class AdminController {
 	/*
 	 * 
 	 * 
-	 *{
+	 *
+	 {
 		    "name":"pankaj",
 		    "email":"pankaj@gmail.com",
 		    "password":"pankaj",
@@ -57,6 +58,7 @@ public class AdminController {
 		 
 		 return new ResponseEntity<>(existingAdmin, HttpStatus.CREATED);
 	}
+	
 	
 	
 	

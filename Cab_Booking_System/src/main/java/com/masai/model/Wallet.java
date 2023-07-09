@@ -1,6 +1,7 @@
 package com.masai.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,17 +34,15 @@ public class Wallet {
 	
 	private double walletBalence;
 	
-	private double creditMoney;
-	private double debitMoney;
 	
 	@Enumerated(EnumType.STRING)
 	private WalletStatus walletStatus = WalletStatus.ACTIVE;
 	
 	private LocalDateTime timeStamp;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "transactionId")
-	private List<Transactions> transactions;
+	@OneToMany(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "transactionId")
+	private List<Transactions> transactions = new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne

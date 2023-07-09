@@ -50,6 +50,7 @@ public class AppConfiguration {
             .authorizeHttpRequests(auth ->{
                 auth                        
                         .requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
+                        .requestMatchers("/api/hello").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/drivers").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/admins/**").permitAll()
@@ -57,7 +58,7 @@ public class AppConfiguration {
                         .requestMatchers(HttpMethod.POST, "/api/cabBooking").hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/api/users/profile", "/api/wallets/**", "/api/cabBooking/user", "/api/users/update/**").hasRole("USER")
                         .requestMatchers("/api/drivers/profile", "/api/cabBooking/driver").hasRole("DRIVER")
-                        .requestMatchers("/api/drivers/email/**", "/api/drivers/id/**", "/api/drivers/location/**").hasAnyRole("USER", "DRIVER", "ADMIN")
+                        .requestMatchers("/api/drivers/email/**", "/api/drivers/id/**", "/api/drivers/location/**", "/api/signIn").hasAnyRole("USER", "DRIVER", "ADMIN")
                         .requestMatchers("/api/**").hasRole("ADMIN")
                         
                         .anyRequest().authenticated();

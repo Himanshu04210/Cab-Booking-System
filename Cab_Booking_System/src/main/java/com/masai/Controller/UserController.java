@@ -120,7 +120,7 @@ public class UserController {
 		
 	}
 	
-	@DeleteMapping("/user/{email}")
+	@DeleteMapping("/users/{email}")
 	public ResponseEntity<?> deleteUserHandler(@PathVariable String email) throws UserException {
 		Users user = userService.deleteUserByEmail(email);
 		return ResponseEntity.ok(user);

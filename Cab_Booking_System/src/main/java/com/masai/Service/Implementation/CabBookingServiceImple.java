@@ -85,8 +85,8 @@ public class CabBookingServiceImple implements CabBookingService{
 		Transactions transaction = new Transactions();
 		
 		transaction.setAmount(totalBill);
-		transaction.setDriver(driver);
-		transaction.setUser(user);
+		transaction.setDriverEmail(driver.getEmail());
+		transaction.setUserEmail(email);
 		transaction.setFromLocation(cabBooking.getFromLocation());
 		transaction.setToLocation(cabBooking.getToLocation());
 		transaction.setTimeStamp(LocalDateTime.now());

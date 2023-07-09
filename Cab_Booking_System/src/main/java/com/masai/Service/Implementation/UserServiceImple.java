@@ -51,8 +51,6 @@ public class UserServiceImple implements UserService{
  			
  			Wallet wallet = new Wallet();
  			wallet.setWalletBalence(0);
- 			wallet.setCreditMoney(0);
- 			wallet.setDebitMoney(0);
  			wallet.setTimeStamp(LocalDateTime.now());
  			wallet.setWalletStatus(WalletStatus.ACTIVE);
  			wallet.setUser(user);
@@ -113,7 +111,9 @@ public class UserServiceImple implements UserService{
 		List<Users> userList = userRepository.findAll();
 		
 		if(userList.isEmpty()) throw new UserException("No user is available");
-		
+//		for(Users user : userList) {
+//			user.getWallet().setTransactions(null);
+//		}
 		return userList;
 	}
 
@@ -138,7 +138,9 @@ public class UserServiceImple implements UserService{
 		
 		List<Users> users = page.getContent();
 		if(users.isEmpty()) throw new UserException("No user present in this page");
-		
+//		for(Users user : users) {
+//			user.getWallet().setTransactions(null);
+//		}
 		return users;
 	}
 	
