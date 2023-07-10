@@ -38,7 +38,6 @@ public class CabResponse {
 	private LocalDateTime timeStamp = LocalDateTime.now();
 	
 	@ManyToOne
-	
 	private Users user;
 	
 	

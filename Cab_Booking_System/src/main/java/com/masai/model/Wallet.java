@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.masai.model.Enums.WalletStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -40,9 +41,9 @@ public class Wallet {
 	
 	private LocalDateTime timeStamp;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	@JoinColumn(name = "transactionId")
-	private List<Transactions> transactions = new ArrayList<>();
+	private List<Transactions> transactions ;//= new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne

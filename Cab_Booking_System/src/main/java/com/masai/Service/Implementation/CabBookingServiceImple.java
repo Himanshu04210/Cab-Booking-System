@@ -13,7 +13,6 @@ import com.masai.Exception.WalletException;
 import com.masai.Repository.CabBookingRepository;
 import com.masai.Repository.CabResponseRepository;
 import com.masai.Repository.DriverRepository;
-import com.masai.Repository.TransactionRepository;
 import com.masai.Repository.UserRepository;
 import com.masai.Repository.WalletRepository;
 import com.masai.Service.CabBookingService;
@@ -43,9 +42,6 @@ public class CabBookingServiceImple implements CabBookingService{
 	@Autowired
 	private WalletRepository walletRepository;
 	
-	@Autowired
-	private TransactionRepository transactionRepository;
-	
 	@Override
 	public CabResponse bookTheCab(String email, CabBooking cabBooking) throws CabBookingException, DriverException, UserException, WalletException {
 		
@@ -55,7 +51,7 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		Users user = userRepository.findByEmail(email).orElseThrow(() -> new UserException("User not found"));
 		
-		user.getWallet().setTransactions(null);
+		//user.getWallet().setTransactions(null);
 		if(!driver.getLocation().toLowerCase().equals(cabBooking.getFromLocation().toLowerCase())) throw new DriverException("Drivers location's is different from your location");
 		
 		driver.setLocation(cabBooking.getToLocation());
@@ -108,8 +104,11 @@ public class CabBookingServiceImple implements CabBookingService{
 			driverRepository.save(driver);
 			cabBookingRepository.save(cabBooking);
 			walletRepository.save(wallet);
-			transactionRepository.save(transaction);
-			return cabResponseRepository.save(cabResponse);
+//			transactionRepository.save(transaction);
+			CabResponse response = cabResponseRepository.save(cabResponse);
+			user.getWallet().setTransactions(null);
+			return response;
+			
 		}
 		catch(Exception ex) {
 			throw new CabBookingException("Something went wrong " + ex.getMessage());
