@@ -14,7 +14,7 @@
  - Wallet Management Module
 
 
-## Frontend And Backend Technologies
+## Backend Technologies
 - Spring Boot
 - Maven
 - Spring Data JPA
