@@ -42,19 +42,23 @@
   <li>
     <p>Users Fetures</p>
     <ul>
-      <li>Register itself in the application also they can logged in</li>
+      <li>Register itself in the application also they can be logged in</li>
       <li>Users can see their own profile also wallet</li>
      <li>Users will able to credit and debit money from their wallet</li>
-     <li>Users can book the cab accroding to their location, Can search the drivers are present or not from thier location</li>
+     <li>Users can book the cab according to their location, Can search the drivers are present or not from their location</li>
     </ul>
   </li>
   <li>
     <p>Drivers Fetures</p>
     <ul>
-      <li>Register itself with thier car in the application also can logged in</li>
+      <li>Register itself with their car in the application also can be logged in</li>
       <li>Driver can see their profile</li>
     </ul>
   </li>
 </ul>
 
+## ER diagram
 
+
+
+<img width="599" alt="Schema" src="https://github.com/Himanshu04210/Cab-Booking-System/assets/115461666/03003f1e-2c8b-422a-8ddc-1d6da35dfe79">
