@@ -26,5 +26,33 @@
 
 
 
+## Features
+<ul>
+  <li>Admin, user and driver can sign up and sign In</li>
+  <li>
+    <p>Admin Fetures</p>
+    <ul>
+      <li>Administrator role for the entire application.</li>
+      <li>Admin can see all the active users and drivers</li>
+      <li>Admin can watch all history for specific users and all the users</li>
+      <li>Admin can watch all history for specific drivers and all the drivers</li>
+    </ul>
+  </li>
+  <li>
+    <p>Users Fetures</p>
+    <ul>
+      <li>Register itself in the application also they can logged in.</li>
+      <li>Users can see their own profile also wallet</li>
+     <li>Users will able to credit and debit money from their wallet</li>
+     <li>Users can book the cab accroding to their location, Can search the drivers are present or not from thier location</li>
+    </ul>
+  </li>
+  <li>
+    <p>Drivers Fetures</p>
+    <ul>
+      <li></li>
+    </ul>
+  </li>
+</ul>
 
 
