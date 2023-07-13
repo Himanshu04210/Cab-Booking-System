@@ -4,3 +4,27 @@
 
 ### An individual project completed by me in 15 working days.
 
+## Modules
+ - User Module
+ - Driver Module
+ - Admins Module
+ - Cab Management Module
+ - Driver Management Module
+ - Booking Management Module
+ - Wallet Management Module
+
+
+## Frontend And Backend Technologies
+- Spring Boot
+- Maven
+- Spring Data JPA
+- Hibernate
+- Spring Security
+- Mysql
+- Lombok
+- Swagger
+
+
+
+
+
