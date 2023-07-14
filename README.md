@@ -15,6 +15,7 @@
 
 
 ## Backend Technologies
+- Java
 - Spring Boot
 - Maven
 - Spring Data JPA
