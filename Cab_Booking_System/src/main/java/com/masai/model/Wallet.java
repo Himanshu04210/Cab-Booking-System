@@ -50,4 +50,5 @@ public class Wallet {
 	@JoinColumn(name = "userId")
 	private Users user;
 	
+	
 }
