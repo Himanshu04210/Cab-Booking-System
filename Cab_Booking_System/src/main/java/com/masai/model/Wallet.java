@@ -42,8 +42,8 @@ public class Wallet {
 	private LocalDateTime timeStamp;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "transactionId")
-	private List<Transactions> transactions ;//= new ArrayList<>();
+	@JoinColumn(name = "transactionId ")
+	private List<Transactions> transactions; //= new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne
