@@ -41,9 +41,11 @@ public class Wallet {
 	
 	private LocalDateTime timeStamp;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "transactionId ")
-	private List<Transactions> transactions; //= new ArrayList<>();
+	
+	// Unidirectional one-to-many relationship from Wallet to Transactions
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "wallet")
+    //@JoinColumn(name = "transactionId") // This specifies the foreign key column in Transactions table
+    private List<Transactions> transactions = new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne

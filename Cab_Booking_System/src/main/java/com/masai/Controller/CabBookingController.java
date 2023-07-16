@@ -24,6 +24,19 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api")
 public class CabBookingController {
+	
+	
+	/*
+	 
+{
+    "fromLocation":"banglore",
+    "toLocation":"mumbai",
+    "distanceInKm":20,
+    "driverId":3
+}
+	 
+	 
+	 */
 
 	@Autowired
 	private CabBookingService cabBookingService;
@@ -51,7 +64,7 @@ public class CabBookingController {
 	}
 	
 	
-	@GetMapping("/CabBooking/driver")
+	@GetMapping("/cabBooking/driver")
 	public ResponseEntity<?> getCabBookedHistoryByDriverEmail(Authentication authentication) throws CabBookingException, DriverException {
 
 		String email = authentication.getName();

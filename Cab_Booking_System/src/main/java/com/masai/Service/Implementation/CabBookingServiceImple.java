@@ -1,6 +1,7 @@
 package com.masai.Service.Implementation;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.masai.Exception.WalletException;
 import com.masai.Repository.CabBookingRepository;
 import com.masai.Repository.CabResponseRepository;
 import com.masai.Repository.DriverRepository;
+import com.masai.Repository.TransactionRepository;
 import com.masai.Repository.UserRepository;
 import com.masai.Repository.WalletRepository;
 import com.masai.Service.CabBookingService;
@@ -23,6 +25,8 @@ import com.masai.model.Transactions;
 import com.masai.model.Users;
 import com.masai.model.Wallet;
 import com.masai.model.Enums.CabStatus;
+
+import jakarta.persistence.EntityManager;
 
 @Service
 public class CabBookingServiceImple implements CabBookingService{
@@ -41,6 +45,9 @@ public class CabBookingServiceImple implements CabBookingService{
 	
 	@Autowired
 	private WalletRepository walletRepository;
+	
+	@Autowired
+	private TransactionRepository transactionRepository;
 	
 	@Override
 	public CabResponse bookTheCab(String email, CabBooking cabBooking) throws CabBookingException, DriverException, UserException, WalletException {
@@ -79,19 +86,22 @@ public class CabBookingServiceImple implements CabBookingService{
 		
 		//making the transaction
 		Transactions transaction = new Transactions();
-		
 		transaction.setAmount(totalBill);
 		transaction.setDriverEmail(driver.getEmail());
 		transaction.setUserEmail(email);
 		transaction.setFromLocation(cabBooking.getFromLocation());
 		transaction.setToLocation(cabBooking.getToLocation());
 		transaction.setTimeStamp(LocalDateTime.now());
+		transaction.setWallet(wallet);
+		
 		
 		wallet.getTransactions().add(transaction);
+		System.out.println(transaction.getTransactionId());
+		
+		
 		
 		//creating the object of CabResponse
-		CabResponse cabResponse = new CabResponse();
-		
+		CabResponse cabResponse = new CabResponse();		
 		cabResponse.setFromLocation(cabBooking.getFromLocation());
 		cabResponse.setToLocation(cabBooking.getToLocation());
 		cabResponse.setCabStatus(CabStatus.COMPLETED);
@@ -101,17 +111,17 @@ public class CabBookingServiceImple implements CabBookingService{
 		cabResponse.setUser(user);
 		
 		try {
+//			transactionRepository.save(transaction);
+			walletRepository.save(wallet);
 			driverRepository.save(driver);
 			cabBookingRepository.save(cabBooking);
-			walletRepository.save(wallet);
-//			transactionRepository.save(transaction);
 			CabResponse response = cabResponseRepository.save(cabResponse);
-			user.getWallet().setTransactions(null);
+//			user.getWallet();
 			return response;
 			
 		}
 		catch(Exception ex) {
-			throw new CabBookingException("Something went wrong " + ex.getMessage());
+			throw new CabBookingException("Something went wrong " + ex.getLocalizedMessage());
 		}
 		
 	}
