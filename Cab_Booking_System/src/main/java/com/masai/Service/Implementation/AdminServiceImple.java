@@ -49,6 +49,14 @@ public class AdminServiceImple implements AdminService{
  			throw new AdminException("Something went wrong " + ex.getMessage());
  		}
 	}
+
+
+	@Override
+	public Admins deleteAdmin(String email) throws AdminException {
+		Admins existingAdmin = adminRepository.findByEmail(email).orElseThrow(() -> new AdminException("Admin not found"));
+		adminRepository.delete(existingAdmin);
+		return existingAdmin;
+	}
 	
 
 

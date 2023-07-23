@@ -5,4 +5,5 @@ import com.masai.model.Admins;
 
 public interface AdminService {
 	public Admins registerAdmin(Admins admin) throws AdminException;
+	public Admins deleteAdmin(String email) throws AdminException;
 }
