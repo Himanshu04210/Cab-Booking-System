@@ -60,6 +60,10 @@ public class AdminController {
 	}
 	
 	
-	
+	public ResponseEntity<?> deleteAdmin(@PathVariable String email) throws AdminException {
+		Admins admin = adminService.deleteAdmin(email);
+		
+		return ResponseEntity.ok(admin);
+	}
 	
 }
