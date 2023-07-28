@@ -21,7 +21,7 @@
 - Spring Data JPA
 - Hibernate
 - Spring Security
-- Mysql
+- MYSQL
 - Lombok
 - Swagger
 
