@@ -31,7 +31,7 @@
 <ul>
   <li>Admin, user and driver can sign up and sign In</li>
   <li>
-    <p>Admin Fetures</p>
+    <p>Admin Features</p>
     <ul>
       <li>Administrator role for the entire application.</li>
       <li>Admin can see all the active users and drivers (Pagination implemented)</li>
@@ -41,7 +41,7 @@
     </ul>
   </li>
   <li>
-    <p>Users Fetures</p>
+    <p>Users Features</p>
     <ul>
       <li>Register itself in the application also they can be logged in</li>
       <li>Users can see their own profile also wallet</li>
@@ -50,7 +50,7 @@
     </ul>
   </li>
   <li>
-    <p>Drivers Fetures</p>
+    <p>Drivers Features</p>
     <ul>
       <li>Register itself with their car in the application also can be logged in</li>
       <li>Driver can see their profile</li>
