@@ -68,4 +68,4 @@
 
 ## Document for better understanding
 
-<a href="https://maroon-radio-540.notion.site/Cab-Booking-System-d2efc5ae95cc4af291d96ffc10285e14?pvs=4">Get Clearification</a>
+<a href="https://maroon-radio-540.notion.site/Cab-Booking-System-d2efc5ae95cc4af291d96ffc10285e14?pvs=4" target="_blank">Get Clearification</a>
