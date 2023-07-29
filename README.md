@@ -46,7 +46,7 @@
       <li>Register itself in the application also they can be logged in</li>
       <li>Users can see their own profile also wallet</li>
      <li>Users will able to credit and debit money from their wallet</li>
-     <li>Users can book the cab according to their location, Can search the drivers are present or not from their location</li>
+     <li>Users can book the cab according to their location and can search whether the drivers are present or not from their location</li>
     </ul>
   </li>
   <li>
@@ -63,3 +63,9 @@
 
 
 <img width="599" alt="Schema" src="https://github.com/Himanshu04210/Cab-Booking-System/assets/115461666/03003f1e-2c8b-422a-8ddc-1d6da35dfe79">
+
+
+
+## Document for better understanding
+
+<a href="https://maroon-radio-540.notion.site/Cab-Booking-System-d2efc5ae95cc4af291d96ffc10285e14?pvs=4">Get Clearification</a>
