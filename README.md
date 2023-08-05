@@ -21,7 +21,7 @@
 - Spring Data JPA
 - Hibernate
 - Spring Security
-- Mysql
+- MYSQL
 - Lombok
 - Swagger
 
@@ -31,7 +31,7 @@
 <ul>
   <li>Admin, user and driver can sign up and sign In</li>
   <li>
-    <p>Admin Fetures</p>
+    <p>Admin Features</p>
     <ul>
       <li>Administrator role for the entire application.</li>
       <li>Admin can see all the active users and drivers (Pagination implemented)</li>
@@ -41,16 +41,16 @@
     </ul>
   </li>
   <li>
-    <p>Users Fetures</p>
+    <p>Users Features</p>
     <ul>
       <li>Register itself in the application also they can be logged in</li>
       <li>Users can see their own profile also wallet</li>
      <li>Users will able to credit and debit money from their wallet</li>
-     <li>Users can book the cab according to their location, Can search the drivers are present or not from their location</li>
+     <li>Users can book the cab according to their location and can search whether the drivers are present or not from their location</li>
     </ul>
   </li>
   <li>
-    <p>Drivers Fetures</p>
+    <p>Drivers Features</p>
     <ul>
       <li>Register itself with their car in the application also can be logged in</li>
       <li>Driver can see their profile</li>
@@ -63,3 +63,9 @@
 
 
 <img width="599" alt="Schema" src="https://github.com/Himanshu04210/Cab-Booking-System/assets/115461666/03003f1e-2c8b-422a-8ddc-1d6da35dfe79">
+
+
+
+## Document for better understanding
+
+<a href="https://maroon-radio-540.notion.site/Cab-Booking-System-d2efc5ae95cc4af291d96ffc10285e14?pvs=4" target="_blank">Get Clearification</a>
