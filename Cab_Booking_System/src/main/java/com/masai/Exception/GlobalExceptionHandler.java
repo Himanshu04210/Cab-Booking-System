@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
 	
 	
 	@ExceptionHandler(CabBookingException.class)
-	public ResponseEntity<?> carExceptionHandler(CabBookingException ce, WebRequest request) {
+	public ResponseEntity<?> CabBookingExceptionHandler(CabBookingException ce, WebRequest request) {
 
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimeStamp(LocalDateTime.now());
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
 	}
 	
 	@ExceptionHandler(DriverException.class)
-	public ResponseEntity<?> carExceptionHandler(DriverException de, WebRequest request) {
+	public ResponseEntity<?> DriverExceptionHandler(DriverException de, WebRequest request) {
 
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimeStamp(LocalDateTime.now());
@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
 	
 
 	@ExceptionHandler(TransactionException.class)
-	public ResponseEntity<?> carExceptionHandler(TransactionException te, WebRequest request) {
+	public ResponseEntity<?> TransactionExceptionHandler(TransactionException te, WebRequest request) {
 
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimeStamp(LocalDateTime.now());
@@ -81,7 +81,7 @@ public class GlobalExceptionHandler {
 
 
 	@ExceptionHandler(UserException.class)
-	public ResponseEntity<?> carExceptionHandler(UserException ue, WebRequest request) {
+	public ResponseEntity<?> UserExceptionHandler(UserException ue, WebRequest request) {
 
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimeStamp(LocalDateTime.now());
@@ -96,7 +96,7 @@ public class GlobalExceptionHandler {
 
 
 	@ExceptionHandler(WalletException.class)
-	public ResponseEntity<?> carExceptionHandler(WalletException we, WebRequest request) {
+	public ResponseEntity<?> WalletExceptionHandler(WalletException we, WebRequest request) {
 
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimeStamp(LocalDateTime.now());
@@ -109,7 +109,7 @@ public class GlobalExceptionHandler {
 	
 	
 	@ExceptionHandler(Exception.class) 
-	public ResponseEntity<?> carExceptionHandler(Exception ex, WebRequest request) {
+	public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest request) {
 
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimeStamp(LocalDateTime.now());
