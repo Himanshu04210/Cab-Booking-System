@@ -20,8 +20,6 @@ import com.masai.model.Admins;
 public class AdminController {
 
 	/*
-	 * 
-	 * 
 	 *
 	 {
 		    "name":"pankaj",
@@ -34,7 +32,6 @@ public class AdminController {
 		    }
 			  
 	  } 
-	 * 
 	 * 
 	 * 
 	 */
