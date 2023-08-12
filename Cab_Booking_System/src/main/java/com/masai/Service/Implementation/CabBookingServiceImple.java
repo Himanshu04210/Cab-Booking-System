@@ -1,11 +1,11 @@
 package com.masai.Service.Implementation;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.masai.Exception.CabBookingException;
 import com.masai.Exception.DriverException;
@@ -14,7 +14,6 @@ import com.masai.Exception.WalletException;
 import com.masai.Repository.CabBookingRepository;
 import com.masai.Repository.CabResponseRepository;
 import com.masai.Repository.DriverRepository;
-import com.masai.Repository.TransactionRepository;
 import com.masai.Repository.UserRepository;
 import com.masai.Repository.WalletRepository;
 import com.masai.Service.CabBookingService;
@@ -25,8 +24,6 @@ import com.masai.model.Transactions;
 import com.masai.model.Users;
 import com.masai.model.Wallet;
 import com.masai.model.Enums.CabStatus;
-
-import jakarta.persistence.EntityManager;
 
 @Service
 public class CabBookingServiceImple implements CabBookingService{
@@ -46,10 +43,8 @@ public class CabBookingServiceImple implements CabBookingService{
 	@Autowired
 	private WalletRepository walletRepository;
 	
-	@Autowired
-	private TransactionRepository transactionRepository;
-	
 	@Override
+	@Transactional
 	public CabResponse bookTheCab(String email, CabBooking cabBooking) throws CabBookingException, DriverException, UserException, WalletException {
 		
 		//Check is every thing is right or not 
