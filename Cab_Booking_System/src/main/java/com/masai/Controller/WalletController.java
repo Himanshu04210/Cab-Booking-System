@@ -37,13 +37,13 @@ public class WalletController {
 	}
 	
 	
+	
 	@GetMapping("/wallets")
 	public ResponseEntity<?> addMoneyInWalletHandler(Authentication authentication) throws WalletException, UserException {
 		String totalWalletBalance = walletService.totalWalletBalance(authentication.getName());
 		
 		return ResponseEntity.ok(totalWalletBalance);
 	}
-	
 	
 	
 }
