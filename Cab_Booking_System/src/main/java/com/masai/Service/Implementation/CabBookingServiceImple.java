@@ -106,12 +106,10 @@ public class CabBookingServiceImple implements CabBookingService{
 		cabResponse.setUser(user);
 		
 		try {
-//			transactionRepository.save(transaction);
 			walletRepository.save(wallet);
 			driverRepository.save(driver);
 			cabBookingRepository.save(cabBooking);
 			CabResponse response = cabResponseRepository.save(cabResponse);
-//			user.getWallet();
 			return response;
 			
 		}

@@ -22,7 +22,6 @@ import com.masai.model.Wallet;
 import com.masai.model.Enums.WalletStatus;
 @Service
 public class UserServiceImple implements UserService{
-
 	@Autowired
 	private UserRepository userRepository;
 	
