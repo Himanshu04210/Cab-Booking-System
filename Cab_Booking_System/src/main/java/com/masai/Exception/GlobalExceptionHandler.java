@@ -136,7 +136,10 @@ public class GlobalExceptionHandler {
     
     
 
-    //This exception handler will handle those exception when we try to call that method which is not exist 
+    
+    
+    
+    //This exception handler will handle those exception when we try to call that method which is not exist in the application
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<?> methodNotFoundExceptionHandler(NoHandlerFoundException nfe, WebRequest req) {
     	
