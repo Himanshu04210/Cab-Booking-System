@@ -47,7 +47,7 @@ public class CabBookingServiceImple implements CabBookingService{
 	@Transactional
 	public CabResponse bookTheCab(String email, CabBooking cabBooking) throws CabBookingException, DriverException, UserException, WalletException {
 		
-		//Check is every thing is right or not 
+		//Check, Is every thing is right or not 
 		
 		Drivers driver = driverRepository.findById(cabBooking.getDriverId()).orElseThrow(() -> new DriverException("Driver not found with this Id"));
 		
